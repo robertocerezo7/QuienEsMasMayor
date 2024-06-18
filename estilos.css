@@ -1,0 +1,265 @@
+body {
+    color: #ffffff;
+    height: 100vh;
+    max-width: 100%;
+    text-align: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background: radial-gradient(at 50% 0%, #23303a 5%, #000000);
+
+}
+
+.startGame {
+    display: block;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.containerpersonajes {
+
+    display: block;
+    height: 100%;
+    align-content: center;
+    position: relative;
+    visibility: hidden;
+}
+
+.personajes {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.personaje {
+    width: 300px;
+    height: 500px;
+    border: solid yellow;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 1s;
+}
+
+
+.personaje:hover {
+    transform: scale(1.1);
+}
+
+.personaje img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    mask-image: linear-gradient(black 80%,
+            transparent);
+}
+
+.personaje h4 {
+    object-fit: cover;
+    margin: 0px;
+    visibility: hidden;
+}
+
+
+
+
+.acierto {
+    width: 300px;
+    height: 500px;
+    border: solid rgb(0, 255, 0);
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1.2);
+    transition: 2s;
+}
+
+.acierto img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    mask-image: linear-gradient(black 80%,
+            transparent);
+}
+
+.acierto h4 {
+    margin: 0px;
+}
+
+
+.error {
+    width: 300px;
+    height: 500px;
+    border: solid red;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(0.8);
+}
+
+.error img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    mask-image: linear-gradient(black 80%,
+            transparent);
+}
+
+.error h4 {
+    margin: 0px;
+}
+
+
+.botones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+
+#siguiente {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+}
+
+#volverajugar {
+    position: absolute;
+    visibility: hidden;
+    z-index: 2;
+}
+
+
+
+.button {
+    align-items: center;
+    appearance: none;
+    background-color: #23303a;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: yellow;
+    box-sizing: border-box;
+    color: yellow;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 56px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 20px;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: #23303a 0 0 0 1.5px inset, rgba(83, 109, 254, 0.4) 0 2px 4px, rgba(83, 109, 254, 0.3) 0 7px 13px -3px, #23303a 0 -3px 0 inset;
+}
+
+.button:hover {
+    box-shadow: rgba(83, 109, 254, 0.3) 0 4px 8px, rgba(83, 109, 254, 0.2) 0 7px 13px -3px, #23303a 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    box-shadow: #23303a 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+
+
+
+@media (width < 451px) {
+
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    .personaje {
+        width: 150px;
+        height: 300px;
+        border: solid yellow;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 1s;
+    }
+
+
+    .personaje:hover {
+        transform: none
+    }
+
+    .personaje img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        mask-image: linear-gradient(black 80%,
+                transparent);
+    }
+
+
+    .acierto {
+        width: 150px;
+        height: 300px;
+        border: solid rgb(0, 255, 0);
+        border-radius: 20px;
+        overflow: hidden;
+        transform: scale(1.2);
+        transition: 2s;
+    }
+
+    .acierto img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        mask-image: linear-gradient(black 80%,
+                transparent);
+    }
+
+    .acierto h4 {
+        margin: 0px;
+        font-size: 10px;
+    }
+
+
+    .error {
+        width: 150px;
+        height: 300px;
+        border: solid red;
+        border-radius: 20px;
+        overflow: hidden;
+        transform: scale(0.8);
+    }
+
+    .error img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        mask-image: linear-gradient(black 80%,
+                transparent);
+    }
+
+    .error h4 {
+        margin: 0px;
+        font-size: 10px;
+    }
+
+
+}
