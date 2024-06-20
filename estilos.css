@@ -3,7 +3,7 @@ body {
     height: 100vh;
     max-width: 100%;
     text-align: center;
-    overflow-y: hidden;
+
     overflow-x: hidden;
     background: -webkit-radial-gradient(at 50% 0%, #23303a 5%, #000000); /* Safari */
     background: radial-gradient(at 50% 0%, #23303a 5%, #000000);

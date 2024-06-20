@@ -2,10 +2,10 @@
 
 var famosos = [];
 fetch('./personasfamosas.json')
-  .then(response => response.json())
-  .then(data => {
-    famosos = data;
-  });
+    .then(response => response.json())
+    .then(data => {
+        famosos = data;
+    });
 
 var contadoraciertos = 0;
 var cambio = 1;
@@ -66,11 +66,12 @@ document.getElementById("siguiente").addEventListener("click", () => {
     resetPersonajes();
 
 
-    cambiarPersonaje();
+    //cambiarPersonaje();
+    cambiarPersonajes();
 
-
+    ocultarDatos();
     ocultarBotones();
-    
+
 })
 
 
@@ -94,7 +95,7 @@ function inicioJuego() {
     resetPersonajes();
     ocultarDatos();
     ocultarBotones();
-    
+
 
     document.getElementById("startGame").style.visibility = "hidden"
     document.getElementById("containerpersonajes").style.visibility = "visible"
@@ -120,9 +121,11 @@ function inicioJuego() {
         }
     });
 
-    cambiarPersonaje();
-    cambio = 2;
-    cambiarPersonaje();
+    //cambiarPersonaje();
+    //cambio = 2;
+    //cambiarPersonaje();
+
+    cambiarPersonajes();
 
     console.log(famososxsalir);
 
@@ -211,6 +214,10 @@ function comprobarAciertoPersonaje(opcion) {
             contadoraciertos++;
             aciertos.innerText = "Aciertos: " + contadoraciertos;
 
+            fechanacimiento1.innerHTML = "Fecha de nacimiento: " + convertDateFormat(personaje1.fecha_nacimiento);
+            fechanacimiento2.innerHTML = "Fecha de nacimiento: " + convertDateFormat(personaje2.fecha_nacimiento);
+
+            mostrarDatos();
 
             document.getElementById("siguiente").style.visibility = "visible"
 
@@ -226,6 +233,11 @@ function comprobarAciertoPersonaje(opcion) {
             cambio = 1;
             contadoraciertos++;
             aciertos.innerText = "Aciertos: " + contadoraciertos;
+
+            fechanacimiento1.innerHTML = "Fecha de nacimiento: " + convertDateFormat(personaje1.fecha_nacimiento);
+            fechanacimiento2.innerHTML = "Fecha de nacimiento: " + convertDateFormat(personaje2.fecha_nacimiento);
+
+            mostrarDatos();
 
             document.getElementById("siguiente").style.visibility = "visible"
 
@@ -247,7 +259,7 @@ function comprobarAciertoPersonaje(opcion) {
 
 };
 
-function resetPersonajes(){
+function resetPersonajes() {
 
     document.getElementById("personaje1").classList.remove("acierto");
     document.getElementById("personaje1").classList.remove("error");
@@ -258,7 +270,7 @@ function resetPersonajes(){
 
 }
 
-function mostrarDatos(){
+function mostrarDatos() {
 
     document.getElementById("edad1").style.visibility = "visible"
     document.getElementById("fechanacimiento1").style.visibility = "visible"
@@ -267,7 +279,7 @@ function mostrarDatos(){
 
 }
 
-function ocultarDatos(){
+function ocultarDatos() {
 
     document.getElementById("edad1").style.visibility = "hidden"
     document.getElementById("fechanacimiento1").style.visibility = "hidden"
@@ -276,11 +288,72 @@ function ocultarDatos(){
 
 }
 
-function ocultarBotones(){
+function ocultarBotones() {
 
     document.getElementById("siguiente").style.visibility = "hidden"
     document.getElementById("volverajugar").style.visibility = "hidden"
 
+}
+
+
+
+function cambiarPersonajes() {
+
+    var random = Math.floor(Math.random() * 3);
+    console.log(random);
+
+    if (random == 1 && famososmenores40.length >= 2) {
+
+        personaje1 = famososmenores40[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje1.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje1.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje1.id);
+
+        personaje2 = famososmenores40[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje2.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje2.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje2.id);
+
+    } else if (random == 2 && famososmenores50.length >= 2) {
+
+        personaje1 = famososmenores50[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje1.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje1.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje1.id);
+
+        personaje2 = famososmenores50[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje2.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje2.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje2.id);
+
+    } else {
+
+        personaje1 = famososxsalir[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje1.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje1.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje1.id);
+
+        personaje2 = famososxsalir[Math.floor(Math.random() * famososmenores40.length)];
+
+        famososmenores40 = famososmenores40.filter(x => x.id != personaje2.id);
+        famososmenores50 = famososmenores50.filter(x => x.id != personaje2.id);
+        famososxsalir = famososxsalir.filter(x => x.id != personaje2.id);
+
+    }
+
+    imagen1.setAttribute("src", personaje1.imagen);
+    titulo1.innerHTML = personaje1.nombre;
+    edad1.innerHTML = "Edad: " + calcularEdad(personaje1.fecha_nacimiento);
+
+
+    imagen2.setAttribute("src", personaje2.imagen);
+    titulo2.innerHTML = personaje2.nombre;
+    edad2.innerHTML = "Edad: " + calcularEdad(personaje2.fecha_nacimiento);
 }
 
 
